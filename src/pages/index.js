@@ -15,17 +15,21 @@ const BlogTitle = styled.h3`
   color: blue;
 `;
 
+const BlogInfo = styled.p`
+  color: black;
+`;
+
 export default ({ data }) => (
   <Layout>
     <SEO title="Home" />
     <div>
       <h1>Justin's Thoughts</h1>
-      <h4>{ data.allMarkdownRemark.totalCount }</h4>
+      <h4>{ data.allMarkdownRemark.totalCount } Posts</h4>
       {
         data.allMarkdownRemark.edges.map(({ node }) => 
           <BlogLink to={node.fields.slug}>
             <BlogTitle>{ node.frontmatter.title } - { node.frontmatter.date }</BlogTitle>
-            <p>{ node.excerpt }</p>
+            <BlogInfo>{ node.excerpt }</BlogInfo>
           </BlogLink>
         )
       }
